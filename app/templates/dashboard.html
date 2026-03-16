@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfraMonitor Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="dashboard">
+        <header class="dashboard-header">
+            <div>
+                <p class="eyebrow">InfraMonitor</p>
+                <h1>Operations Dashboard</h1>
+            </div>
+            <div class="last-updated-card">
+                <span class="last-updated-label">Last updated</span>
+                <strong id="last-updated">Waiting for data</strong>
+            </div>
+        </header>
+
+        <section class="card card-system">
+            <div class="card-header">
+                <h2>System</h2>
+                <span class="status-pill status-pill-healthy">Live</span>
+            </div>
+            <div class="system-grid">
+                <article class="metric-tile">
+                    <span class="metric-label">Hostname</span>
+                    <strong class="metric-value" id="system-hostname">-</strong>
+                </article>
+                <article class="metric-tile">
+                    <span class="metric-label">Uptime</span>
+                    <strong class="metric-value" id="system-uptime">-</strong>
+                </article>
+                <article class="metric-tile">
+                    <span class="metric-label">Memory usage</span>
+                    <strong class="metric-value" id="system-memory">-</strong>
+                </article>
+                <article class="metric-tile">
+                    <span class="metric-label">Disk usage</span>
+                    <strong class="metric-value" id="system-disk">-</strong>
+                </article>
+                <article class="metric-tile">
+                    <span class="metric-label">Load average</span>
+                    <strong class="metric-value" id="system-load">-</strong>
+                </article>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>Ports</h2>
+            </div>
+            <div class="status-list" id="ports-list">
+                <p class="empty-state">Waiting for data</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>Upstreams</h2>
+            </div>
+            <div class="status-list" id="upstreams-list">
+                <p class="empty-state">Waiting for data</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>Services</h2>
+            </div>
+            <div class="status-list" id="services-list">
+                <p class="empty-state">Waiting for data</p>
+            </div>
+        </section>
+    </main>
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

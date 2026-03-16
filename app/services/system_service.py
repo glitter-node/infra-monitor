@@ -1,3 +1,5 @@
+import asyncio
+import os
 import socket
 import time
 from typing import Any
@@ -5,13 +7,13 @@ from typing import Any
 import psutil
 
 
-async def collect_system_metrics() -> dict[str, Any]:
+def _collect_system_metrics_sync() -> dict[str, Any]:
     virtual_memory = psutil.virtual_memory()
     disk_usage = psutil.disk_usage("/")
     uptime_seconds = int(time.time() - psutil.boot_time())
 
     try:
-        load_average_values = psutil.getloadavg()
+        load_average_values = os.getloadavg()
         load_average = [
             float(load_average_values[0]),
             float(load_average_values[1]),
@@ -31,3 +33,7 @@ async def collect_system_metrics() -> dict[str, Any]:
         "disk_used": disk_usage.used,
         "disk_percent": float(disk_usage.percent),
     }
+
+
+async def collect_system_metrics() -> dict[str, Any]:
+    return await asyncio.to_thread(_collect_system_metrics_sync)
